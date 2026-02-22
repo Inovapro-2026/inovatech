@@ -1,5 +1,6 @@
 
 import { useState, useEffect } from 'react';
+import { useNavigate } from 'react-router-dom';
 import { motion } from 'framer-motion';
 import { Search, Filter, Star, Heart, ArrowRight, Loader2 } from 'lucide-react';
 import DashboardLayout from '@/components/layout/DashboardLayout';
@@ -48,6 +49,7 @@ export default function MarketplaceIndex() {
     const [authModalOpen, setAuthModalOpen] = useState(false);
     const [authActionText, setAuthActionText] = useState('');
     const { user } = useAuth();
+    const navigate = useNavigate();
 
     useEffect(() => {
         fetchServices();
@@ -191,8 +193,7 @@ export default function MarketplaceIndex() {
                 payload: actionPayload,
                 timestamp: Date.now()
             }));
-            setAuthActionText(actionText);
-            setAuthModalOpen(true);
+            navigate('/cliente/cadastro');
         } else {
             callback();
         }
