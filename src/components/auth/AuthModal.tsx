@@ -25,6 +25,7 @@ interface AuthModalProps {
 }
 
 export default function AuthModal({ isOpen, onClose, actionText = 'Para continuar, crie sua conta', defaultRole = 'client', onSuccess }: AuthModalProps) {
+    const [mode, setMode] = useState<'register' | 'login'>('register');
     const [role, setRole] = useState<'client' | 'freelancer'>(defaultRole);
     const [fullName, setFullName] = useState('');
     const [email, setEmail] = useState('');
@@ -33,12 +34,13 @@ export default function AuthModal({ isOpen, onClose, actionText = 'Para continua
     const [loading, setLoading] = useState(false);
     const [error, setError] = useState('');
 
-    const { signUp } = useAuth();
+    const { signUp, signIn } = useAuth();
     const navigate = useNavigate();
 
     useEffect(() => {
         if (isOpen) {
             setRole(defaultRole);
+            setMode('register');
             setError('');
         }
     }, [isOpen, defaultRole]);
@@ -47,30 +49,38 @@ export default function AuthModal({ isOpen, onClose, actionText = 'Para continua
         e.preventDefault();
         setError('');
 
-        if (!acceptTerms) {
+        if (mode === 'register' && !acceptTerms) {
             setError('Você deve concordar com os Termos de Uso.');
             return;
         }
 
         setLoading(true);
 
-        const { error: signUpError } = await signUp(email, password, fullName, role);
+        if (mode === 'register') {
+            const { error: signUpError } = await signUp(email, password, fullName, role);
 
-        if (signUpError) {
-            setError(signUpError.message || 'Erro ao criar conta. Tente novamente.');
-            setLoading(false);
-            return;
+            if (signUpError) {
+                setError(signUpError.message || 'Erro ao criar conta. Tente novamente.');
+                setLoading(false);
+                return;
+            }
+
+            toast.success('Conta criada com sucesso!');
+        } else {
+            const { error: signInError } = await signIn(email, password);
+
+            if (signInError) {
+                setError(signInError.message || 'Erro ao efetuar login. Tente novamente.');
+                setLoading(false);
+                return;
+            }
+
+            toast.success('Login realizado com sucesso!');
         }
 
-        toast.success('Conta criada com sucesso!');
         setLoading(false);
         onClose();
         if (onSuccess) onSuccess();
-    };
-
-    const handleLoginClick = () => {
-        onClose();
-        navigate(role === 'client' ? '/cliente/login' : '/freelas/login');
     };
 
     return (
@@ -78,7 +88,7 @@ export default function AuthModal({ isOpen, onClose, actionText = 'Para continua
             if (!loading && !open) onClose();
         }}>
             <DialogContent className="sm:max-w-md p-0 overflow-hidden border-0 shadow-2xl">
-                <div className="bg-slate-50 p-6 sm:p-8">
+                <div className="bg-slate-50 p-6 sm:p-8 max-h-[90vh] overflow-y-auto w-full">
                     <DialogHeader className="mb-6">
                         <div className="flex justify-center mb-6">
                             <div className="w-12 h-12 rounded-xl bg-teal-600 flex items-center justify-center shadow-lg shadow-teal-600/20">
@@ -86,10 +96,10 @@ export default function AuthModal({ isOpen, onClose, actionText = 'Para continua
                             </div>
                         </div>
                         <DialogTitle className="text-center text-2xl font-bold text-slate-800">
-                            {actionText}
+                            {mode === 'register' ? actionText : 'Fazer Login'}
                         </DialogTitle>
                         <p className="text-center text-slate-500 mt-2 text-sm">
-                            Leva menos de 2 minutos e é 100% grátis.
+                            {mode === 'register' ? 'Leva menos de 2 minutos e é 100% grátis.' : 'Bem-vindo de volta!'}
                         </p>
                     </DialogHeader>
 
@@ -135,17 +145,19 @@ export default function AuthModal({ isOpen, onClose, actionText = 'Para continua
                     )}
 
                     <form onSubmit={handleSubmit} className="space-y-4">
-                        <div className="space-y-2">
-                            <Label htmlFor="fullName">Nome Completo</Label>
-                            <Input
-                                id="fullName"
-                                value={fullName}
-                                onChange={(e) => setFullName(e.target.value)}
-                                placeholder="Ex Silva"
-                                required
-                                className="h-11 rounded-lg"
-                            />
-                        </div>
+                        {mode === 'register' && (
+                            <div className="space-y-2">
+                                <Label htmlFor="fullName">Nome Completo</Label>
+                                <Input
+                                    id="fullName"
+                                    value={fullName}
+                                    onChange={(e) => setFullName(e.target.value)}
+                                    placeholder="Ex Silva"
+                                    required
+                                    className="h-11 rounded-lg"
+                                />
+                            </div>
+                        )}
 
                         <div className="space-y-2">
                             <Label htmlFor="email">Email {role === 'client' ? 'Corporativo' : ''}</Label>
@@ -174,33 +186,41 @@ export default function AuthModal({ isOpen, onClose, actionText = 'Para continua
                             />
                         </div>
 
-                        <div className="flex items-start gap-3 pt-2">
-                            <Checkbox
-                                id="terms"
-                                checked={acceptTerms}
-                                onCheckedChange={(checked) => setAcceptTerms(checked as boolean)}
-                                className="mt-1 data-[state=checked]:bg-teal-600 data-[state=checked]:border-teal-600"
-                            />
-                            <Label htmlFor="terms" className="text-sm text-slate-600 font-normal leading-snug cursor-pointer">
-                                Li e concordo com os Termos de Uso e Política de Privacidade.
-                            </Label>
-                        </div>
+                        {mode === 'register' && (
+                            <div className="flex items-start gap-3 pt-2">
+                                <Checkbox
+                                    id="terms"
+                                    checked={acceptTerms}
+                                    onCheckedChange={(checked) => setAcceptTerms(checked as boolean)}
+                                    className="mt-1 data-[state=checked]:bg-teal-600 data-[state=checked]:border-teal-600"
+                                />
+                                <Label htmlFor="terms" className="text-sm text-slate-600 font-normal leading-snug cursor-pointer">
+                                    Li e concordo com os Termos de Uso e Política de Privacidade.
+                                </Label>
+                            </div>
+                        )}
 
                         <Button
                             type="submit"
                             disabled={loading}
                             className="w-full h-12 mt-2 rounded-xl bg-teal-600 hover:bg-teal-700 text-white font-semibold shadow-lg shadow-teal-600/20 transition-all duration-300"
                         >
-                            {loading ? 'Criando conta...' : 'Criar Conta Gratuitamente'}
+                            {loading ? 'Aguarde...' : (mode === 'register' ? 'Criar Conta Gratuitamente' : 'Entrar na Plataforma')}
                         </Button>
-                        <p className="text-center text-xs text-slate-400 mt-2">Sem necessidade de cartão de crédito</p>
+                        {mode === 'register' && (
+                            <p className="text-center text-xs text-slate-400 mt-2">Sem necessidade de cartão de crédito</p>
+                        )}
                     </form>
 
-                    <div className="mt-6 pt-6 border-t border-slate-200 text-center">
+                    <div className="mt-6 pt-6 border-t border-slate-200 text-center pb-2">
                         <p className="text-sm text-slate-500">
-                            Já tem conta?{' '}
-                            <button type="button" onClick={handleLoginClick} className="text-teal-600 hover:text-teal-700 font-semibold transition-colors">
-                                Entrar
+                            {mode === 'register' ? 'Já tem conta? ' : 'Ainda não tem conta? '}
+                            <button
+                                type="button"
+                                onClick={() => setMode(mode === 'register' ? 'login' : 'register')}
+                                className="text-teal-600 hover:text-teal-700 font-semibold transition-colors"
+                            >
+                                {mode === 'register' ? 'Entrar' : 'Criar Conta'}
                             </button>
                         </p>
                     </div>
