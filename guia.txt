@@ -1,0 +1,1660 @@
+# 🧠 MEGA PROMPT — PAINEL ADMINISTRATIVO COMPLETO E AVANÇADO INOVAPRO
+
+**Objetivo:**
+Transformar o painel admin atual em um **sistema empresarial completo** com métricas avançadas, gestão completa de todas as áreas da plataforma, relatórios detalhados, automações e ferramentas profissionais de administração. Todas as funcionalidades devem usar **dados reais do Supabase** e integrar com **Mercado Pago** para gestão financeira.
+
+---
+
+## 🎨 DESIGN SYSTEM ATUALIZADO
+**Cores:**
+- **Primária:** `#6366f1` (Indigo-500) → `#4f46e5` (Indigo-600)
+- **Sidebar:** `#0f172a` (Slate-900) com gradientes sutis
+- **Cards:** Branco com `shadow-xl`, bordas arredondadas `rounded-2xl`
+- **Background:** Gradiente sutil `from-slate-50 to-slate-100`
+- **Status Cores:**
+  - ✅ Sucesso: `#10b981` (Emerald)
+  - ⚠️ Atenção: `#f59e0b` (Amber)
+  - 🔴 Erro/Crítico: `#ef4444` (Red)
+  - 🔵 Info: `#3b82f6` (Blue)
+  - 🟣 Admin: `#8b5cf6` (Violet)
+
+---
+
+## 📊 1. VISÃO GERAL (`/admin`) — DASHBOARD AVANÇADO
+
+### **Header da Página:**
+- **Título:** "Visão Geral da Plataforma 📊"
+- **Subtítulo:** "Métricas em tempo real e desempenho da INOVAPRO"
+- **Filtros:**
+  - Período: [Hoje] [7 dias] [30 dias] [90 dias] [Ano] [Personalizado]
+  - Comparativo: Toggle "Mostrar vs período anterior"
+- **Botões:**
+  - "📄 Exportar Relatório PDF"
+  - "📊 Exportar CSV"
+  - "🔄 Atualizar Dados"
+
+### **CARDS DE KPIs PRINCIPAIS (6 colunas em grid 3x2):**
+
+#### **Linha 1 - Financeiro:**
+| Card 1: GMV Total | Card 2: Receita Plataforma | Card 3: Ticket Médio |
+|-------------------|---------------------------|---------------------|
+| **Ícone:** 💰 | **Ícone:** 📈 | **Ícone:** 🎯 |
+| **Valor:** R$ 45.250,00 | **Valor:** R$ 6.787,50 | **Valor:** R$ 452,50 |
+| **Sub:** "Este mês" | **Sub:** "Taxas + Planos" | **Sub:** "Por transação" |
+| **Trend:** +12.5% ↗️ | **Trend:** +8.3% ↗️ | **Trend:** +3.1% ↗️ |
+| **Sparkline:** Mini gráfico 7 dias | **Sparkline:** Mini gráfico | **Sparkline:** Mini gráfico |
+| **Cores:** Indigo | **Cores:** Emerald | **Cores:** Amber |
+
+#### **Linha 2 - Usuários:**
+| Card 4: Total Usuários | Card 5: Novos Cadastros | Card 6: Taxa de Ativação |
+|------------------------|-------------------------|--------------------------|
+| **Ícone:** 👥 | **Ícone:** ➕ | **Ícone:** 📊 |
+| **Valor:** 1.247 | **Valor:** 89 | **Valor:** 67.4% |
+| **Sub:** "543 Freelas \| 704 Clientes" | **Sub:** "Últimos 30 dias" | **Sub:** "Completaram perfil" |
+| **Trend:** +15.2% ↗️ | **Trend:** +22.1% ↗️ | **Trend:** +5.4% ↗️ |
+| **Breakdown:** Barra de progresso Freelas vs Clientes | **Gráfico:** Linha dos últimos 7 dias | **Gráfico:** Donut chart |
+
+#### **Linha 3 - Projetos/Contratos:**
+| Card 7: Projetos Publicados | Card 8: Contratos Ativos | Card 9: Taxa de Conversão |
+|----------------------------|-------------------------|--------------------------|
+| **Ícone:** 📦 | **Ícone:** 📋 | **Ícone:** 🎪 |
+| **Valor:** 342 | **Valor:** 67 | **Valor:** 19.6% |
+| **Sub:** "215 Publicados \| 127 Rascunhos" | **Sub:** "Em andamento agora" | **Sub:** "Projetos → Contratos" |
+| **Status:** 3 pendentes aprovação | **Status:** 5 entregas hoje | **Trend:** +2.8% ↗️ |
+| **Cores:** Blue | **Cores:** Orange | **Cores:** Purple |
+
+#### **Linha 4 - Qualidade/Suporte:**
+| Card 10: Satisfação Média | Card 11: Disputas Ativas | Card 12: Tempo Médio Entrega |
+|--------------------------|-------------------------|----------------------------|
+| **Ícone:** ⭐ | **Ícone:** ⚠️ | **Ícone:** ⏱️ |
+| **Valor:** 4.7/5.0 | **Valor:** 3 | **Valor:** 5.2 dias |
+| **Sub:** "Baseado em 234 avaliações" | **Sub:** "Requerem atenção" | **Sub:** "Meta: 7 dias" |
+| **Rating:** 5 estrelas visuais | **Alerta:** Vermelho se > 5 | **Progress:** 74% dentro do prazo |
+| **Cores:** Yellow | **Cores:** Red (urgente) | **Cores:** Teal |
+
+### **GRÁFICOS AVANÇADOS:**
+
+#### **Gráfico 1: Evolução de Receitas (Linha Dupla)**
+- **Título:** "Evolução de Receitas e GMV"
+- **Tipo:** Line chart com 2 eixos Y
+- **Eixo X:** Últimos 12 meses
+- **Eixo Y Esquerdo:** Receita Plataforma (R$)
+- **Eixo Y Direito:** GMV Total (R$)
+- **Linhas:**
+  - Receita (Indigo, espessura 3px)
+  - GMV (Emerald, espessura 2px, tracejada)
+- **Tooltips:** Valores exatos ao hover
+- **Legenda:** Clicável para mostrar/esconder
+- **Export:** Botão download PNG/SVG
+
+#### **Gráfico 2: Distribuição por Categoria (Donut + Barra)**
+- **Título:** "Categorias Populares"
+- **Tipo:** Donut chart central + barras laterais
+- **Donut:**
+  - Design: % de projetos por categoria
+  - Cores: 6 cores distintas (Indigo, Emerald, Amber, Red, Purple, Teal)
+  - Centro: Total de projetos (número grande)
+- **Barras Laterais:**
+  - Top 5 categorias com mais contratações
+  - Valor médio por categoria
+  - Trend vs mês anterior (setas)
+
+#### **Gráfico 3: Funil de Conversão**
+- **Título:** "Funil: Visita → Cadastro → Contratação"
+- **Etapas:**
+  1. Visitantes únicos: 5.234 (100%)
+  2. Cadastros: 847 (16.2%)
+  3. Perfis completos: 571 (67.4%)
+  4. Projetos publicados: 342 (59.9%)
+  5. Contratos fechados: 67 (19.6%)
+- **Visual:** Funil horizontal com cores gradientes
+- **Insights:** "Melhorar etapa 2→3 em 15%"
+
+#### **Gráfico 4: Heatmap de Atividade**
+- **Título:** "Atividade por Dia/Hora"
+- **Tipo:** Calendar heatmap (GitHub-style)
+- **Eixo X:** Dias da semana (Seg-Dom)
+- **Eixo Y:** Horas (00:00 - 23:00)
+- **Cores:** Intensidade de verde (quanto mais escuro, mais atividade)
+- **Insights:** "Pico: Terças 14:00-16:00"
+
+### **TABELAS RESUMO (Bottom Section):**
+
+#### **Tabela 1: Últimas Transações (5 linhas)**
+| Data/Hora | Tipo | Usuário | Valor | Status | Ações |
+|-----------|------|---------|-------|--------|-------|
+| 15/02 14:32 | Pagamento | João Silva | +R$ 350,00 | ✅ Aprovado | 👁️ Ver |
+| 15/02 13:15 | Taxa | TechCorp | +R$ 35,00 | ✅ Liberado | 👁️ Ver |
+| 15/02 11:48 | Estorno | Maria S. | -R$ 200,00 | ⏳ Processando | ⚠️ Acompanhar |
+| 15/02 10:22 | Saque | Pedro L. | -R$ 1.200,00 | ✅ Concluído | 📄 Comprovante |
+| 15/02 09:05 | Plano Pro | DesignCo | +R$ 29,00 | ✅ Ativo | 🔁 Renovar |
+
+**Botões da Tabela:**
+- "Ver Todas" → `/admin/financeiro`
+- Filtros rápidos: [Todas] [Pagamentos] [Taxas] [Saques] [Estornos]
+
+#### **Tabela 2: Usuários Recentes (5 linhas)**
+| Usuário | Tipo | Data Cadastro | Status | Projetos | Valor Total | Ações |
+|---------|------|---------------|--------|----------|-------------|-------|
+| Ana Costa | Freelancer | 15/02/2025 | 🟢 Ativo | 3 | R$ 1.250,00 | 👁️ ✏️ 🚫 |
+| TechCorp | Cliente | 14/02/2025 | 🟢 Ativo | 1 | R$ 350,00 | 👁️ ✏️ 🚫 |
+| Carlos M. | Freelancer | 14/02/2025 | 🟡 Pendente | 0 | R$ 0,00 | 👁️ ✏️ ✅ |
+
+**Botões:**
+- 👁️ Ver perfil completo (modal)
+- ✏️ Editar dados
+- 🚫 Banir usuário
+- ✅ Aprovar perfil pendente
+
+### **ALERTAS E NOTIFICAÇÕES (Top Cards):**
+
+#### **Card de Alerta Crítico (se houver):**
+```
+🔴 ATENÇÃO NECESSÁRIA
+• 3 disputas aguardando mediação há mais de 48h
+• 2 pagamentos pendentes de revisão manual
+• 1 usuário reportado por conduta inadequada
+[Ver Detalhes] [Ignorar]
+```
+
+#### **Card de Insights (IA/Analytics):**
+```
+💡 INSIGHTS DA PLATAFORMA
+• Taxa de conversão aumentou 15% esta semana
+• Categoria "Design" tem maior demanda (42% dos projetos)
+• Tempo médio de entrega caiu de 7.2 para 5.2 dias
+• Recomendação: Contratar mais suporte para Terças-feiras
+[Ver Relatório Completo]
+```
+
+---
+
+## 👥 2. USUÁRIOS (`/admin/usuarios`) — GESTÃO COMPLETA
+
+### **Header:**
+- **Título:** "Gerenciamento de Usuários"
+- **Subtítulo:** "Administre todos os usuários da plataforma"
+- **Contador:** "Total: 1.247 usuários"
+- **Botões:**
+  - "📄 Exportar CSV"
+  - "➕ Adicionar Admin" (se super admin)
+  - "📧 Enviar Email em Massa"
+
+### **Filtros Avançados (Barra Superior):**
+**Layout:** Grid com 6 filtros
+1. **Busca Global:**
+   - Placeholder: "Buscar por nome, email, CPF, telefone..."
+   - Ícone: 🔍
+   - Busca em tempo real (debounce 300ms)
+
+2. **Tipo de Usuário:**
+   - Dropdown: [Todos] [Clientes] [Freelancers] [Administradores]
+   - Ícone: 👤
+
+3. **Status:**
+   - Dropdown: [Todos] [Ativo] [Inativo] [Banido] [Pendente] [Verificado]
+   - Cores por status
+
+4. **Período de Cadastro:**
+   - Date range picker
+   - Opções rápidas: [Hoje] [Última semana] [Este mês] [Personalizado]
+
+5. **Plano:**
+   - Dropdown: [Todos] [Free] [Pro] [Premium]
+   - Apenas para freelancers
+
+6. **Ordenação:**
+   - Dropdown: [Mais Recentes] [Mais Antigos] [Nome A-Z] [Nome Z-A] [Maior Valor] [Menor Valor]
+
+### **Tabela Principal de Usuários:**
+
+**Colunas:**
+| Coluna | Conteúdo | Sortável |
+|--------|----------|----------|
+| **Usuário** | Avatar (40px) + Nome (bold) + Email (cinza) | Sim |
+| **Tipo** | Badge colorido (Cliente/Freelancer/Admin) | Sim |
+| **Status** | Badge + Ícone (🟢 Ativo, 🟡 Pendente, 🔴 Banido) | Sim |
+| **Cadastro** | Data formatada + "Há X dias" | Sim |
+| **Perfil** | Barra de progresso % completo (ex: 85%) | Sim |
+| **Projetos** | Count projetos + count contratos | Sim |
+| **Valor Total** | Soma de todas as transações (R$) | Sim |
+| **Último Acesso** | Data/hora + "Há X horas" | Sim |
+| **Ações** | Botões: 👁️ ✏️ 📧 🚫 🗑️ | - |
+
+**Query Supabase:**
+```javascript
+const {  users } = await supabase
+.from('profiles')
+.select(`
+  *,
+  projects (count),
+  contracts_client:contracts!client_id (count),
+  contracts_freelancer:contracts!freelancer_id (count),
+  wallets (balance),
+  admin_users (role)
+`)
+.order('created_at', { ascending: false });
+```
+
+### **Modal "Ver Perfil Completo":**
+
+**Layout:** Tabs horizontais
+#### **Tab 1: Dados Pessoais**
+- Foto de perfil (grande, 120px)
+- Nome completo
+- Email (verificado ✅ ou não ⚠️)
+- Telefone/WhatsApp
+- CPF/CNPJ
+- Data de nascimento
+- Endereço completo
+- Data de cadastro
+- Última atividade
+
+#### **Tab 2: Estatísticas**
+- **Cards:**
+  - Total de Projetos: 12
+  - Contratos Fechados: 8
+  - Valor Movimentado: R$ 12.450,00
+  - Avaliação Média: 4.8/5.0 (24 avaliações)
+  - Tempo Médio Entrega: 4.2 dias
+  - Taxa de Conclusão: 92%
+
+- **Gráficos:**
+  - Linha: Projetos por mês (últimos 6 meses)
+  - Pizza: Categorias trabalhadas
+
+#### **Tab 3: Atividades Recentes**
+- Timeline vertical:
+  - "15/02 14:30 - Login realizado"
+  - "14/02 16:45 - Projeto publicado: Logo Design"
+  - "13/02 10:20 - Contrato fechado: R$ 350,00"
+  - "12/02 09:15 - Perfil atualizado"
+
+#### **Tab 4: Projetos/Contratos**
+- Tabela com todos os projetos do usuário
+- Filtros: [Todos] [Publicados] [Em Andamento] [Concluídos]
+
+#### **Tab 5: Financeiro**
+- Saldo atual na carteira
+- Extrato completo de transações
+- Saques realizados
+- Pendências (se houver)
+
+**Botões de Ação no Modal:**
+- ✏️ **Editar Dados:** Abre formulário inline
+- 🔑 **Redefinir Senha:** Envia email de reset
+- 📧 **Enviar Email:** Abre composer de email
+- 🚫 **Banir/Desbanir:** Modal com motivo e duração
+- 🗑️ **Excluir Conta:** (Apenas se não tiver contratos)
+- ⚡ **Tornar Admin:** (Apenas super admin)
+- 💳 **Ajustar Saldo:** Adicionar/remover crédito (com justificativa)
+
+### **Ação "Banir Usuário":**
+
+**Modal de Confirmação:**
+```
+🚫 BANIR USUÁRIO
+
+Usuário: João Silva (joao@email.com)
+
+Motivo do Banimento:
+[Dropdown]
+• Fraude/Golpe
+• Conduta inadequada
+• Spam
+• Violação de termos
+• Solicitação do usuário
+• Outro
+
+Duração:
+○ Temporária (dias): [ 7 ]
+○ Permanente
+
+Mensagem para o usuário (email):
+[Textarea]
+" Sua conta foi banida por violar nossos termos..."
+
+📋 Ações Automáticas:
+☑️ Encerrar sessões ativas
+☑️ Cancelar contratos pendentes
+☑️ Reverter pagamentos pendentes
+☑️ Notificar clientes/freelancers afetados
+
+[BANIR USUÁRIO] [CANCELAR]
+```
+
+**Backend Actions:**
+1. Atualizar `profiles.status = 'banned'`
+2. Inserir em `admin_logs` (quem, quando, por quê)
+3. Enviar email ao usuário
+4. Invalidar todas as sessões (Supabase Auth)
+5. Notificar partes afetadas (se houver contratos)
+
+### **Bulk Actions (Ações em Massa):**
+
+**Checkbox na tabela:**
+- Selecionar múltiplos usuários
+- Barra de ações flutuante aparece:
+  - "Selecionados: 5 usuários"
+  - Botões:
+    - "📧 Enviar Email"
+    - "🚫 Banir Selecionados"
+    - "📄 Exportar Selecionados"
+    - "❌ Limpar Seleção"
+
+---
+
+## 📦 3. PROJETOS (`/admin/projetos`) — MODERAÇÃO E GESTÃO
+
+### **Header:**
+- **Título:** "Gerenciamento de Projetos"
+- **Subtítulo:** "Modere e acompanhe todos os projetos publicados"
+- **Contadores:**
+  - "📦 Total: 342"
+  - "🟢 Publicados: 215"
+  - "🟡 Pendentes: 3"
+  - "🔴 Reportados: 2"
+- **Botões:**
+  - "📊 Exportar Relatório"
+  - "🔍 Filtros Avançados"
+
+### **Filtros:**
+1. **Busca:** Título, descrição, freelancer
+2. **Status:** [Todos] [Publicado] [Rascunho] [Arquivado] [Pendente Moderação] [Reportado]
+3. **Categoria:** Dropdown multi-select
+4. **Faixa de Preço:** Min/Max inputs
+5. **Data Publicação:** Date range
+6. **Freelancer:** Busca por nome/email
+
+### **Grid de Cards de Projetos:**
+
+**Cada Card:**
+```
+┌─────────────────────────────────────┐
+│ [IMAGEM CAPA - 300x200px]           │
+│                                     │
+│ Badge: 🟢 PUBLICADO                 │
+│                                     │
+│ 📦 Criação de Logo Institucional    │
+│                                     │
+│ 👤 Por: Maicon Correia              │
+│    [Avatar 24px] Ver perfil →       │
+│                                     │
+│ 🏷️ Categoria: Design               │
+│ 💰 Preço: R$ 350,00                 │
+│                                     │
+│ 📊 Estatísticas:                    │
+│ • 👁️ 234 visualizações             │
+│ • 💬 12 consultas                   │
+│ • ⭐ 4.9 (24 avaliações)            │
+│                                     │
+│ 📅 Publicado em: 10/02/2025         │
+│ 🕐 Atualizado: há 2 dias            │
+│                                     │
+│ ─────────────────────────────────   │
+│ [👁️ Ver] [✏️ Editar] [🚩 Reportar]  │
+│ [🗑️ Remover] [📊 Analytics]         │
+└─────────────────────────────────────┘
+```
+
+**Hover Effects:**
+- Card eleva (`translate-y -4px`)
+- Sombra aumenta
+- Botões de ação aparecem com destaque
+
+### **Modal "Ver Projeto Completo":**
+
+**Seções:**
+1. **Preview Completo:**
+   - Imagens em gallery (lightbox)
+   - Título e descrição completa
+   - Tags/habilidades
+   - Preço e prazo estimado
+
+2. **Dados do Freelancer:**
+   - Card com perfil completo
+   - Link para painel do freelancer
+
+3. **Estatísticas Detalhadas:**
+   - Visualizações por dia (gráfico)
+   - Fonte de tráfego (direto, busca, referral)
+   - Taxa de conversão (visualizações → consultas)
+   - Consultas recebidas (lista)
+
+4. **Histórico de Alterações:**
+   - Timeline de edições
+   - Quem editou, quando, o que mudou
+
+5. **Denúncias/Reports (se houver):**
+   - Lista de reports com motivos
+   - Usuários que reportaram
+   - Botões: [Ignorar Denúncia] [Remover Projeto] [Notificar Freelancer]
+
+**Ações Admin:**
+- ✅ **Aprovar:** Se estava pendente
+- 🚫 **Rejeitar:** Com motivo (notifica freelancer)
+- 📝 **Solicitar Alterações:** Abre chat com freelancer
+- 🗑️ **Remover da Plataforma:** Soft delete
+- 🔒 **Ocultar Temporariamente:** Mantém dados, não exibe público
+- 📊 **Ver Analytics:** Gráficos detalhados de performance
+
+---
+
+## 📋 4. CONTRATOS (`/admin/contratos`) — ACOMPANHAMENTO TOTAL
+
+### **Header:**
+- **Título:** "Gestão de Contratos"
+- **Subtítulo:** "Acompanhe todas as contratações da plataforma"
+- **Badges de Status:**
+  - 🟡 Pendentes: 5
+  - 🔵 Em Andamento: 67
+  - 🟣 Entregues: 12
+  - ✅ Concluídos: 234
+  - 🔴 Cancelados: 8
+  - ⚠️ Disputas: 3
+
+### **Filtros Avançados:**
+1. **Busca:** Projeto, cliente, freelancer
+2. **Status:** Multi-select com todos os status
+3. **Valor:** Range slider (R$ 50 - R$ 10.000)
+4. **Data Criação:** Date range picker
+5. **Forma Pagamento:** [Cartão] [PIX] [Boleto]
+6. **Com Disputa:** Toggle sim/não
+
+### **Tabela Detalhada de Contratos:**
+
+**Colunas:**
+| Coluna | Conteúdo |
+|--------|----------|
+| **Projeto** | Thumb + Título + Categoria |
+| **Cliente** | Avatar + Nome + Email |
+| **Freelancer** | Avatar + Nome + Avaliação |
+| **Valor** | R$ formatado + Taxa plataforma (small) |
+| **Status** | Badge colorido + Ícone |
+| **Pagamento** | Status MP + ID transação |
+| **Prazo** | Data entrega + Countdown (se ativo) |
+| **Progresso** | Barra de % (se aplicável) |
+| **Ações** | 👁️ Ver | ⚠️ Intervir | 📄 Ver Pagamento |
+
+**Query Supabase:**
+```javascript
+const {  contracts } = await supabase
+.from('contracts')
+.select(`
+  *,
+  projects (title, cover_image_url, category),
+  client:profiles!client_id (full_name, email, avatar_url),
+  freelancer:profiles!freelancer_id (full_name, avatar_url, rating),
+  payments (*),
+  deliveries (*)
+`)
+.order('created_at', { ascending: false });
+```
+
+### **Modal "Ver Contrato Completo":**
+
+**Layout:** 2 colunas (70% | 30%)
+
+#### **Coluna Esquerda (Principal):**
+
+**1. Header do Contrato:**
+- Título do projeto
+- Badge de status grande
+- ID do contrato (#CTR-2025-001234)
+- Data criação + última atualização
+
+**2. Participantes:**
+- **Cliente:** Card com foto, nome, email, telefone, histórico
+- **Freelancer:** Card com foto, nome, email, avaliação, portfólio
+- **Botões:**
+  - "📧 Contatar Cliente"
+  - "📧 Contatar Freelancer"
+  - "👁️ Ver Perfil Completo"
+
+**3. Detalhes do Projeto:**
+- Descrição completa
+- Escopo definido
+- Entregáveis esperados
+- Requisitos técnicos
+
+**4. Timeline Interativa:**
+```
+●────●────○────○────○
+│    │
+Criado Aceito
+10/02  11/02
+
+Status atual: Em Andamento
+Previsão entrega: 18/02/2025 (7 dias restantes)
+```
+
+**5. Entregas:**
+- Lista de todas as entregas
+- Cada entrega:
+  - Data/hora
+  - Arquivos anexados (preview/download)
+  - Mensagem do freelancer
+  - Status (Aguardando aprovação ✅ / Aprovado / Solicitou ajuste)
+
+**6. Chat do Contrato:**
+- Histórico completo de mensagens
+- Filtro: [Todas] [Sistema] [Cliente] [Freelancer]
+- Busca por palavra-chave
+
+#### **Coluna Direita (Financeiro/Ações):**
+
+**1. Card Financeiro:**
+```
+💰 RESUMO FINANCEIRO
+
+Valor do Projeto: R$ 350,00
+Taxa Plataforma (10%): R$ 35,00
+Líquido Freelancer: R$ 315,00
+
+Status Pagamento:
+✅ Pago via PIX em 10/02 14:32
+ID: mp_1234567890
+
+Distribuição:
+• R$ 35,00 → Plataforma
+• R$ 315,00 → Freelancer (retido)
+```
+
+**2. Botões de Ação Admin:**
+- ⚠️ **Intervir no Contrato:**
+  - Abre modal de mediação
+  - Opções: Pausar, Cancelar, Estender prazo, Alterar valor
+  
+- 💵 **Gerenciar Pagamento:**
+  - Ver detalhes no Mercado Pago
+  - Forçar liberação (se travado)
+  - Processar estorno parcial/total
+  
+- 📝 **Alterar Status:**
+  - Dropdown com todos os status
+  - Justificativa obrigatória
+  - Notificar partes
+  
+- 📄 **Gerar Documento:**
+  - Contrato PDF
+  - Nota fiscal (se aplicável)
+  - Recibo de pagamento
+  
+- 🔔 **Enviar Notificação:**
+  - Email para cliente
+  - Email para freelancer
+  - Notificação push
+
+**3. Logs do Contrato:**
+- Timeline de todas as ações
+- "15/02 10:30 - Status alterado para 'Em Andamento' por Admin"
+- "14/02 16:20 - Pagamento confirmado via webhook"
+- "13/02 09:15 - Contrato criado por TechCorp"
+
+---
+
+## 💰 5. FINANCEIRO (`/admin/financeiro`) — GESTÃO COMPLETA
+
+### **Header:**
+- **Título:** "Gestão Financeira"
+- **Subtítulo:** "Controle total de transações, saques e recebimentos"
+- **Período:** Date range picker + compara vs período anterior
+- **Botões:**
+  - "📄 Gerar Relatório Mensal PDF"
+  - "📊 Exportar CSV (Contabilidade)"
+  - "💸 Processar Saques Pendentes"
+  - "🔄 Sincronizar com Mercado Pago"
+
+### **CARDS DE RESUMO FINANCEIRO (Grid 2x2):**
+
+#### **Linha 1:**
+| Card 1: Saldo Total Plataforma | Card 2: Receita do Mês |
+|--------------------------------|------------------------|
+| **Valor:** R$ 45.678,90 | **Valor:** R$ 6.787,50 |
+| **Breakdown:** | **Comparativo:** |
+| • Disponível: R$ 32.450,00 | • vs mês anterior: +8.3% ↗️ |
+| • Retido (garantia): R$ 8.228,90 | • Meta: R$ 8.000,00 (84.8%) |
+| • Pendente saque: R$ 5.000,00 | **Composição:** |
+| **Ação:** [Transferir para Conta] | • Taxas: R$ 5.234,50 (77%) |
+| | • Planos: R$ 1.553,00 (23%) |
+
+#### **Linha 2:**
+| Card 3: Saques Pendentes | Card 4: Estornos (Mês) |
+|-------------------------|------------------------|
+| **Valor:** R$ 12.450,00 | **Valor:** R$ 1.235,00 |
+| **Count:** 8 freelancers | **Count:** 3 transações |
+| **Urgência:** | **Motivos:** |
+| • > 7 dias: 2 (vermelho) | • Insatisfação: 1 |
+| • 3-7 dias: 3 (amber) | • Cancelamento: 2 |
+| • < 3 dias: 3 (verde) | **Taxa:** 2.7% (meta < 5%) |
+| **Ação:** [Processar Todos] | **Ação:** [Ver Detalhes] |
+
+### **TABELA DE TRANSAÇÕES COMPLETA:**
+
+**Filtros:**
+- Tipo: [Todas] [Pagamentos] [Taxas] [Planos] [Saques] [Estornos] [Ajustes]
+- Status: [Todas] [Aprovado] [Pendente] [Recusado] [Processando] [Concluído]
+- Valor: Min/Max
+- Data: Range picker
+- Usuário: Busca por nome/email
+- ID Transação: Input para busca específica
+
+**Colunas da Tabela:**
+| Coluna | Conteúdo |
+|--------|----------|
+| **Data/Hora** | Formatada + tooltip com timestamp completo |
+| **Tipo** | Badge colorido + ícone |
+| **Descrição** | "Pagamento - Projeto Logo Design" |
+| **Usuário** | Avatar + Nome + Email |
+| **ID MP** | `mp_xxx...` (truncado, clicável) |
+| **Valor** | R$ formatado (verde +, vermelho -) |
+| **Taxas** | Valor da taxa plataforma (se aplicável) |
+| **Status** | Badge com cor + ícone |
+| **Ações** | 👁️ Ver | 📄 Comprovante | 🔄 Reverter |
+
+**Query Supabase:**
+```javascript
+const {  transactions } = await supabase
+.from('transactions')
+.select(`
+  *,
+  user:profiles (full_name, email, avatar_url),
+  contract:contracts (projects (title))
+`)
+.order('created_at', { ascending: false });
+```
+
+### **Modal "Ver Transação Detalhada":**
+
+**Seções:**
+1. **Resumo:**
+   - Tipo, data, ID único
+   - Status com badge grande
+   
+2. **Participantes:**
+   - Quem pagou
+   - Quem recebeu
+   - Plataforma (taxas)
+
+3. **Valores:**
+   - Valor bruto
+   - Taxas descontadas
+   - Valor líquido
+   - Câmbio (se aplicável)
+
+4. **Pagamento Mercado Pago:**
+   - ID completo
+   - Método (PIX, Cartão, Boleto)
+   - Data aprovação
+   - Link direto no MP dashboard
+
+5. **Relacionado:**
+   - Projeto/Contrato vinculado
+   - Link para ver contrato
+
+6. **Histórico:**
+   - "15/02 14:32 - Pagamento aprovado"
+   - "15/02 14:30 - Aguardando pagamento"
+
+**Botões:**
+- 📄 **Baixar Comprovante PDF**
+- 📧 **Enviar Comprovante por Email**
+- 🔄 **Estornar** (se elegível)
+- ⚠️ **Reportar Problema**
+
+### **SEÇÃO DE SAQUES:**
+
+**Tabela de Saques Pendentes:**
+| Freelancer | Valor Solicitado | Data Solicitação | Dias Aguardando | Status MP | Ações |
+|------------|-----------------|------------------|-----------------|-----------|-------|
+| Maicon C. | R$ 1.250,00 | 10/02/2025 | 5 dias | Pendente | ✅ Aprovar | ❌ Rejeitar |
+| Ana Silva | R$ 3.400,00 | 08/02/2025 | 7 dias | Pendente | ⚠️ Urgente |
+
+**Ação "Aprovar Saque":**
+```
+✅ APROVAR SAQUE
+
+Freelancer: Maicon Correia da Silva
+Valor: R$ 1.250,00
+Dados Bancários:
+Banco: Itaú (341)
+Agência: 1234
+Conta: 56789-0
+Tipo: Conta Corrente
+
+💰 Custos:
+Valor saque: R$ 1.250,00
+Taxa transferência: R$ 3,50
+Total debitado: R$ 1.253,50
+
+Confirmação:
+☑️ Verifiquei os dados bancários
+☑️ Freelancer não possui pendências
+☑️ Saldo suficiente na conta plataforma
+
+[PROCESSAR SAQUE] [CANCELAR]
+```
+
+**Backend:**
+1. Debitar da wallet do freelancer
+2. Registrar transação de saque
+3. Chamar API do Mercado Pago (payout)
+4. Enviar email de confirmação
+5. Atualizar status na tabela
+
+### **RELATÓRIOS FINANCEIROS:**
+
+**Botão "Gerar Relatório Mensal":**
+- Selecionar mês/ano
+- Opções:
+  - ☑️ Incluir gráfico de receitas
+  - ☑️ Incluir top freelancers
+  - ☑️ Incluir projeções
+  - ☑️ Incluir comparativo vs mês anterior
+- Formato: PDF ou Excel
+- Email: Enviar para admin@inovapro.com.br
+
+**Conteúdo do Relatório:**
+1. Resumo executivo
+2. Gráfico de evolução de receitas
+3. Top 10 freelancers por faturamento
+4. Top 5 categorias mais rentáveis
+5. Taxa de conversão e ticket médio
+6. Projeção para próximo mês
+7. Recomendações
+
+---
+
+## ⚠️ 6. DISPUTAS (`/admin/disputas`) — MEDIAÇÃO PROFISSIONAL
+
+### **Header:**
+- **Título:** "Central de Disputas"
+- **Subtítulo:** "Mediação de conflitos entre clientes e freelancers"
+- **Alerta:** "🔴 3 disputas aguardam atenção há mais de 48h"
+- **Estatísticas:**
+  - Total Abertas: 12
+  - Em Análise: 7
+  - Aguardando Info: 3
+  - Resolvidas (Mês): 24
+  - Tempo Médio Resolução: 3.2 dias
+
+### **Filtros:**
+- Status: [Todas] [Aguardando Informação] [Em Análise] [Decisão Tomada] [Resolvida]
+- Prioridade: [Baixa] [Média] [Alta] [Crítica]
+- Valor: Min/Max
+- Data Abertura: Range
+- Tipo: [Qualidade] [Prazo] [Pagamento] [Comunicação] [Outro]
+
+### **Lista de Cards de Disputas:**
+
+**Cada Card:**
+```
+┌─────────────────────────────────────────────┐
+│ 🚨 DISPUTA #DSP-2025-0042                   │
+│ Status: 🔴 Em Análise | Prioridade: ALTA    │
+│ Aberta em: 12/02/2025 (3 dias atrás)        │
+│                                             │
+│ 📦 Projeto: Criação de Logo Institucional   │
+│ Valor: R$ 350,00                            │
+│                                             │
+│ 👤 Cliente: TechCorp (joao@techcorp.com)    │
+│ 👤 Freelancer: Maicon Correia (maicon@...)  │
+│                                             │
+│ 📝 Motivo:                                  │
+│ "Entrega não atendeu aos requisitos..."     │
+│                                             │
+│ 💬 Última Atividade:                        │
+│ Cliente enviou evidências há 2 horas        │
+│                                             │
+│ ⏰ SLA:                                     │
+│ ████████░░ 80% (vence em 24h)              │
+│                                             │
+│ [🔍 GERENCIAR DISPUTA]                      │
+└─────────────────────────────────────────────┘
+```
+
+### **Modal "Gerenciar Disputa":**
+
+**Layout:** 3 colunas (40% | 40% | 20%)
+
+#### **Coluna 1 - Cliente:**
+- Perfil completo
+- Argumentos da disputa (texto)
+- Evidências anexadas (imagens, screenshots)
+- Histórico de mensagens enviadas
+- Botão: "📧 Contatar Cliente"
+
+#### **Coluna 2 - Freelancer:**
+- Perfil completo
+- Resposta à disputa
+- Entregas enviadas (arquivos, links)
+- Evidências de defesa
+- Botão: "📧 Contatar Freelancer"
+
+#### **Coluna 3 - Mediação Admin:**
+
+**1. Chat de Mediação:**
+- Admin pode enviar mensagens
+- Mensagens visíveis para ambas partes
+- Anexar arquivos
+- Marcar como "Comunicação Interna" (só admins veem)
+
+**2. Timeline da Disputa:**
+```
+15/02 10:30 - Freelancer enviou entrega
+15/02 14:20 - Cliente solicitou ajuste
+16/02 09:15 - Freelancer reenviou
+17/02 11:00 - Cliente abriu disputa
+17/02 14:30 - Admin atribuído: Você
+```
+
+**3. Decisão Final:**
+
+**Opções de Resolução:**
+```
+🔘 Liberar pagamento integral ao freelancer
+  • Cliente insatisfeito, mas entrega conforme escopo
+  • Valor: R$ 315,00 (após taxa)
+
+🔘 Estornar valor integral ao cliente
+  • Entrega não atendeu requisitos
+  • Valor: R$ 350,00
+
+🔘 Divisão proporcional
+  • Cliente: R$ _______ (___%)
+  • Freelancer: R$ _______ (___%)
+  
+🔘 Solução personalizada
+  • [Textarea para descrever]
+```
+
+**Campo Obrigatório:**
+```
+Justificativa da Decisão:
+[Textarea - Mínimo 50 caracteres]
+"Após análise das evidências, constatamos que..."
+```
+
+**Checklist:**
+- ☑️ Analisei todas as evidências
+- ☑️ Verifiquei o escopo original
+- ☑️ Ambas as partes foram ouvidas
+- ☑️ Decisão baseada nos Termos de Uso
+
+**Botões:**
+- ✅ **TOMAR DECISÃO** (aciona pagamento/estorno)
+- 💾 **Salvar Rascunho**
+- ⏸️ **Aguardar Mais Informações**
+- 📞 **Agendar Call de Mediação**
+
+**Ação "Tomar Decisão":**
+
+**Backend:**
+1. Atualizar `disputes.status = 'resolved'`
+2. Atualizar `contracts.status` conforme decisão
+3. Processar pagamento via Mercado Pago:
+   - Se liberar: `mp.payment.release()`
+   - Se estornar: `mp.refund.create()`
+   - Se divisão: split manual
+4. Enviar emails para ambas as partes
+5. Registrar em `admin_logs`
+6. Atualizar ratings (se aplicável)
+
+**Email Template (Cliente):**
+```
+Assunto: Disputa #DSP-2025-0042 Resolvida
+
+Prezado(a) [Nome],
+
+A disputa referente ao projeto "[Título]" foi resolvida.
+
+Decisão: [Descrição]
+
+Justificativa:
+[Texto completo da justificativa]
+
+[Se estorno]
+O valor de R$ 350,00 será estornado em até 5 dias úteis.
+
+[Se liberação]
+O pagamento foi liberado ao freelancer conforme acordado.
+
+Dúvidas? Responda este email.
+
+Equipe INOVAPRO
+```
+
+---
+
+## ⚙️ 7. CONFIGURAÇÕES (`/admin/config`) — CONTROLE TOTAL
+
+### **Header:**
+- **Título:** "Configurações da Plataforma"
+- **Subtítulo:** "Gerencie taxas, planos, regras e integrações"
+- **Botão:** "💾 Salvar Todas as Alterações"
+
+### **SEÇÃO 1: TAXAS DA PLATAFORMA**
+
+**Card: Estrutura de Taxas**
+```
+💰 TAXAS POR SERVIÇO
+
+Plano Free:
+[ 20 ]% por transação
+Clientes Free pagam 20% de taxa
+
+Plano Pro:
+[ 10 ]% por transação
+Redução de 50% na taxa
+
+Plano Premium:
+[ 5 ]% por transação
+Taxa mínima para power users
+
+Taxa Mínima:
+R$ [ 2,00 ]
+Valor mínimo cobrado por transação
+
+Taxa de Saque:
+R$ [ 3,50 ]
+Custo por transferência bancária
+```
+
+**Card: Planos Mensais**
+```
+📦 PLANOS DE ASSINATURA
+
+Plano Pro:
+Valor: R$ [ 29,00 ] /mês
+Benefícios:
+• Taxa reduzida (10%)
+• Destaque nas buscas
+• Suporte prioritário
+• Analytics avançado
+
+Plano Premium:
+Valor: R$ [ 59,00 ] /mês
+Benefícios:
+• Taxa mínima (5%)
+• Destaque máximo
+• Gerente de conta
+• API de integração
+• Saque imediato
+
+Período de Teste:
+[ 7 ] dias grátis para novos usuários
+```
+
+**Botões:**
+- "💾 Salvar Taxas"
+- "👁️ Preview para Usuários"
+- "📊 Simular Impacto Financeiro"
+
+### **SEÇÃO 2: MERCADO PAGO (INTEGRAÇÃO)**
+
+**Card: Credenciais API**
+```
+💳 INTEGRAÇÃO MERCADO PAGO
+
+Status: 🟢 Conectado
+Última sincronização: há 5 minutos
+
+Access Token:
+••••••••••••••••••••k7Hj2
+[Mostrar] [Alterar] [Testar Conexão]
+
+Public Key:
+••••••••••••••••••••m9Pq4
+[Mostrar] [Copiar]
+
+Webhook URL:
+https://api.inovapro.com.br/webhooks/mercadopago
+[Copiar] [Ver Logs]
+
+Webhook Secret:
+[Gerar Novo] [Verificar Assinatura]
+```
+
+**Card: Configurações de Pagamento**
+```
+⚙️ PREFERÊNCIAS
+
+Métodos Aceitos:
+☑️ Cartão de Crédito
+☑️ PIX (liquidação imediata)
+☑️ Boleto Bancário (2 dias úteis)
+
+Parcelamento:
+☑️ Permitir parcelamento
+Máximo: [ 12 ]x
+Juros: [ 1,99 ]% ao mês
+
+Pagamento Mínimo:
+R$ [ 50,00 ]
+Valor mínimo para contratação
+
+Pagamento Máximo:
+R$ [ 10.000,00 ]
+Limite por transação
+
+Retenção de Pagamento:
+[ 15 ] dias
+Período de garantia antes de liberar
+```
+
+**Card: Taxas do Mercado Pago**
+```
+💸 CUSTOS MP
+
+Taxa Cartão Crédito:
+[ 4,99 ]% + R$ [ 0,40 ]
+Por transação aprovada
+
+Taxa PIX:
+[ 1,99 ]%
+Sem taxa fixa
+
+Taxa Boleto:
+R$ [ 1,99 ]
+Por boleto gerado
+
+Recebimento:
+Imediato (cartão) | 1 dia útil (PIX) | 2 dias (boleto)
+```
+
+**Botões:**
+- "🧪 Enviar Transação Teste"
+- "📊 Ver Relatório de Taxas"
+- "🔄 Sincronizar Webhooks"
+
+### **SEÇÃO 3: REGRAS DA PLATAFORMA**
+
+**Card: Prazos**
+```
+⏱️ PRAZOS E LIMITES
+
+Prazo Máximo de Projeto:
+[ 90 ] dias
+Duração máxima permitida
+
+Prazo para Aprovação:
+[ 7 ] dias
+Cliente tem X dias para aprovar entrega
+
+Prazo para Revisão:
+[ 3 ] dias
+Freelancer tem X dias para reenviar
+
+Tempo para Saque:
+[ 2 ] dias úteis
+Processamento de retiradas
+
+Valor Mínimo de Projeto:
+R$ [ 50,00 ]
+Projetos abaixo não permitidos
+
+Valor Máximo de Projeto:
+R$ [ 50.000,00 ]
+Limite superior por projeto
+```
+
+**Card: Limites de Usuário**
+```
+👥 LIMITES POR USUÁRIO
+
+Projetos Ativos (Cliente):
+[ 20 ]
+Máximo de contratos simultâneos
+
+Projetos Ativos (Freelancer):
+[ 10 ]
+Limite de trabalhos em andamento
+
+Saque Diário:
+R$ [ 5.000,00 ]
+Limite por dia
+
+Saque Mensal:
+R$ [ 50.000,00 ]
+Limite por mês
+
+Tentativas de Login:
+[ 5 ]
+Bloqueio após X tentativas falhas
+```
+
+**Botões:**
+- "💾 Salvar Regras"
+- "📋 Exportar Políticas"
+- "👁️ Preview Termos de Uso"
+
+### **SEÇÃO 4: EMAILS E NOTIFICAÇÕES**
+
+**Card: Configurações SMTP**
+```
+📧 SERVIDOR DE EMAIL
+
+Status: 🟢 Conectado
+
+Host:
+smtp.sendgrid.net
+
+Port:
+[ 587 ]
+
+Username:
+apikey
+
+Password:
+••••••••••••••••
+[Testar Conexão]
+
+Email Remetente:
+noreply@inovapro.com.br
+
+Nome Remetente:
+INOVAPRO
+```
+
+**Card: Emails Transacionais**
+```
+✉️ TEMPLATES DE EMAIL
+
+Cadastro Confirmado:
+[Preview] [Editar] [Testar Envio]
+
+Boas-vindas Freelancer:
+[Preview] [Editar] [Testar]
+
+Boas-vindas Cliente:
+[Preview] [Editar] [Testar]
+
+Novo Contrato:
+[Preview] [Editar] [Testar]
+
+Entrega Realizada:
+[Preview] [Editar] [Testar]
+
+Disputa Aberta:
+[Preview] [Editar] [Testar]
+
+Recuperação de Senha:
+[Preview] [Editar] [Testar]
+```
+
+**Card: Notificações Push**
+```
+🔔 NOTIFICAÇÕES
+
+Firebase Cloud Messaging:
+Status: 🟢 Ativo
+
+Server Key:
+••••••••••••••••••••
+[Alterar] [Testar]
+
+Eventos que enviam push:
+☑️ Nova mensagem
+☑️ Contrato criado
+☑️ Entrega realizada
+☑️ Pagamento confirmado
+☑️ Disputa aberta
+☑️ Prazo próximo (24h)
+```
+
+**Botões:**
+- "📧 Enviar Email Teste"
+- "🔔 Enviar Push Teste"
+- "📊 Ver Taxa de Abertura"
+
+### **SEÇÃO 5: APARÊNCIA E BRANDING**
+
+**Card: Identidade Visual**
+```
+🎨 MARCA E CORES
+
+Logo Principal:
+[Preview 150x50px]
+[Upload Novo] [Remover]
+Formato: PNG/SVG (max 2MB)
+
+Logo Escuro (sidebar):
+[Preview]
+[Upload Novo]
+
+Favicon:
+[Preview 32x32px]
+[Upload Novo]
+
+Cor Primária:
+[#6366f1] [Indigo-500]
+[Color Picker]
+
+Cor Secundária:
+[#4f46e5] [Indigo-600]
+[Color Picker]
+
+Cor de Destaque:
+[#10b981] [Emerald-500]
+[Color Picker]
+```
+
+**Card: Textos Institucionais**
+```
+📝 CONTEÚDO
+
+Título da Plataforma:
+INOVPRO
+
+Tagline:
+"Contrate freelancers profissionais em minutos"
+
+Descrição SEO:
+"Plataforma de contratação de freelancers..."
+
+Texto Rodapé:
+"© 2025 INOVAPRO. Todos os direitos reservados."
+
+Redes Sociais:
+LinkedIn: [https://linkedin.com/company/inovapro]
+Instagram: [https://instagram.com/inovapro]
+Twitter: [https://twitter.com/inovapro]
+```
+
+**Botões:**
+- "💾 Salvar Aparência"
+- "👁️ Preview Site"
+- "🎨 Resetar para Padrão"
+
+### **SEÇÃO 6: MANUTENÇÃO E SEGURANÇA**
+
+**Card: Modo Manutenção**
+```
+🔧 MANUTENÇÃO
+
+Status: 🟢 Plataforma Online
+
+Modo Manutenção:
+🔴 Desativado
+[Ativar Modo Manutenção]
+
+Quando ativo:
+• Usuários veem página de manutenção
+• Novos cadastros bloqueados
+• Sessões existentes mantidas
+
+Mensagem Personalizada:
+"Estamos realizando manutenção programada.
+Voltaremos em breve!"
+
+Agendar Manutenção:
+Data: [ 20/02/2025 ]
+Horário: [ 02:00 ] - [ 06:00 ]
+Duração estimada: [ 4 ] horas
+[Agendar]
+```
+
+**Card: Backups**
+```
+💾 BACKUPS AUTOMÁTICOS
+
+Status: 🟢 Ativo
+Frequência: Diária (03:00)
+Retenção: 30 dias
+
+Último Backup:
+15/02/2025 03:00 - ✅ Sucesso
+Tamanho: 234 MB
+[Download] [Restaurar]
+
+Backup Manual:
+[Criar Backup Agora]
+
+Destino:
+☑️ Supabase Storage
+☑️ AWS S3 (backup secundário)
+```
+
+**Card: Logs e Auditoria**
+```
+📋 LOGS DO SISTEMA
+
+Retenção de Logs:
+[ 90 ] dias
+
+Nível de Log:
+[ Detalhado ▼ ]
+• Básico
+• Normal
+• Detalhado
+• Debug
+
+Logs Recentes:
+[Ver Todos os Logs]
+
+Exportar Logs:
+Período: [ 01/02/2025 ] - [ 15/02/2025 ]
+Formato: [ JSON ▼ ] [ CSV ]
+[Exportar]
+```
+
+**Card: Segurança**
+```
+🔐 SEGURANÇA
+
+HTTPS Forçado:
+🟢 Ativo
+
+CORS:
+Domínios permitidos:
+• app.inovapro.com.br
+• admin.inovapro.com.br
+[Adicionar Domínio]
+
+Rate Limiting:
+🟢 Ativo
+API: 100 req/min
+Auth: 10 req/min
+
+CSRF Protection:
+🟢 Ativo
+
+2FA Obrigatório (Admins):
+🔴 Desativado
+[Ativar]
+
+Session Timeout:
+[ 30 ] minutos
+Inatividade máxima
+```
+
+**Botões:**
+- "🔒 Verificar Segurança"
+- "📊 Audit Log Completo"
+- "🛡️ Configurar Firewall"
+
+### **SEÇÃO 7: ADMINISTRADORES**
+
+**Card: Lista de Admins**
+```
+👥 ADMINISTRADORES
+
+Total: 3 administradores
+
+Admin 1 - Super Admin:
+👤 Seu Nome
+📧 seu@email.com
+🔑 Permissões: Total
+📅 Desde: 01/01/2025
+[Editar Permissões] [Remover]
+
+Admin 2 - Moderador:
+👤 Maria Santos
+📧 maria@inovapro.com.br
+🔑 Permissões: Usuários, Projetos, Disputas
+📅 Desde: 15/01/2025
+[Editar] [Remover]
+
+Admin 3 - Financeiro:
+👤 João Silva
+📧 financeiro@inovapro.com.br
+🔑 Permissões: Financeiro, Relatórios
+📅 Desde: 20/01/2025
+[Editar] [Remover]
+```
+
+**Card: Adicionar Admin**
+```
+➕ NOVO ADMINISTRADOR
+
+Email do Usuário:
+[buscar@email.com]
+[Buscar]
+
+Nível de Acesso:
+○ Super Admin (todas permissões)
+○ Moderador (conteúdo e usuários)
+○ Financeiro (transações e relatórios)
+○ Suporte (disputas e tickets)
+
+Permissões Específicas:
+☑️ Ver usuários
+☑️ Editar usuários
+☑️ Banir usuários
+☑️ Ver projetos
+☑️ Remover projetos
+☑️ Ver contratos
+☑️ Intervir em contratos
+☑️ Ver financeiro
+☑️ Processar saques
+☑️ Ver disputas
+☑️ Decidir disputas
+☑️ Alterar configurações
+☑️ Gerenciar admins
+
+Validade:
+○ Permanente
+○ Temporária: [ 90 ] dias
+
+[CONVIDAR ADMIN]
+```
+
+**Backend:**
+1. Verificar se email existe em `profiles`
+2. Inserir em `admin_users` com role e permissions
+3. Enviar email de convite
+4. Registrar em `admin_logs`
+
+---
+
+## 🗄️ BANCO DE DADOS - TABELAS ADICIONAIS
+
+### **`admin_logs` (Audit Trail)**
+```sql
+create table admin_logs (
+  id bigint generated by default as identity primary key,
+  admin_id uuid references admin_users(id),
+  action text not null,
+  table_affected text,
+  record_id uuid,
+  old_value jsonb,
+  new_value jsonb,
+  ip_address inet,
+  user_agent text,
+  created_at timestamp with time zone default timezone('utc'::text, now())
+);
+
+create index idx_admin_logs_admin on admin_logs(admin_id);
+create index idx_admin_logs_created on admin_logs(created_at);
+create index idx_admin_logs_action on admin_logs(action);
+```
+
+### **`platform_settings`**
+```sql
+create table platform_settings (
+  key text primary key,
+  value jsonb not null,
+  updated_at timestamp with time zone default timezone('utc'::text, now()),
+  updated_by uuid references admin_users(id)
+);
+
+-- Exemplos de keys:
+-- 'fees.standard_percentage' = 20
+-- 'fees.pro_percentage' = 10
+-- 'plans.pro_monthly_price' = 29.00
+-- 'payment.min_amount' = 50.00
+-- 'limits.max_project_days' = 90
+```
+
+### **`disputes`**
+```sql
+create type dispute_status as enum ('pending_info', 'under_review', 'decided', 'resolved');
+create type dispute_priority as enum ('low', 'medium', 'high', 'critical');
+
+create table disputes (
+  id uuid default gen_random_uuid() primary key,
+  contract_id uuid references contracts(id),
+  opened_by uuid references profiles(id),
+  reason text not null,
+  status dispute_status default 'pending_info',
+  priority dispute_priority default 'medium',
+  assigned_admin uuid references admin_users(id),
+  resolution text,
+  decision jsonb, -- {type: 'refund'|'release'|'split', amounts: {...}}
+  resolved_at timestamp with time zone,
+  created_at timestamp with time zone default timezone('utc'::text, now()),
+  updated_at timestamp with time zone default timezone('utc'::text, now())
+);
+
+create index idx_disputes_status on disputes(status);
+create index idx_disputes_created on disputes(created_at);
+```
+
+---
+
+## ✅ CHECKLIST COMPLETO DE IMPLEMENTAÇÃO
+
+### **Infraestrutura:**
+- [ ] Criar todas as tabelas no Supabase
+- [ ] Configurar RLS para todas as tabelas
+- [ ] Criar funções e triggers de audit log
+- [ ] Configurar webhooks do Mercado Pago
+- [ ] Setup Firebase Cloud Messaging
+- [ ] Configurar SMTP/SendGrid
+
+### **Frontend - Visão Geral:**
+- [ ] Implementar 12 cards de KPI com dados reais
+- [ ] Criar 4 gráficos avançados (Recharts/Chart.js)
+- [ ] Tabela de transações recentes
+- [ ] Tabela de usuários recentes
+- [ ] Alertas e notificações dinâmicas
+- [ ] Filtros de período funcionais
+- [ ] Exportação PDF/CSV
+
+### **Frontend - Usuários:**
+- [ ] Tabela completa com filtros
+- [ ] Modal de perfil com 5 tabs
+- [ ] Ações: editar, banir, email, excluir
+- [ ] Bulk actions (seleção múltipla)
+- [ ] Busca em tempo real
+- [ ] Exportação CSV
+
+### **Frontend - Projetos:**
+- [ ] Grid de cards responsivo
+- [ ] Modal de visualização completa
+- [ ] Sistema de moderação (aprovar/rejeitar)
+- [ ] Gestão de reports/denúncias
+- [ ] Analytics por projeto
+
+### **Frontend - Contratos:**
+- [ ] Tabela detalhada com todos os status
+- [ ] Modal completo com 2 colunas
+- [ ] Timeline interativa
+- [ ] Ações de intervenção admin
+- [ ] Integração com Mercado Pago
+
+### **Frontend - Financeiro:**
+- [ ] Cards de resumo financeiro
+- [ ] Tabela de transações completa
+- [ ] Gestão de saques pendentes
+- [ ] Processamento de estornos
+- [ ] Relatórios mensais PDF
+- [ ] Sincronização com MP
+
+### **Frontend - Disputas:**
+- [ ] Cards de disputas com SLA
+- [ ] Modal de mediação 3 colunas
+- [ ] Chat de mediação
+- [ ] Sistema de decisão (3 opções)
+- [ ] Integração com pagamentos/estornos
+- [ ] Templates de email
+
+### **Frontend - Configurações:**
+- [ ] 7 seções completas de configurações
+- [ ] Upload de imagens (logo, favicon)
+- [ ] Color pickers
+- [ ] Toggle switches
+- [ ] Gestão de admins e permissões
+- [ ] Configuração Mercado Pago
+- [ ] SMTP e emails
+- [ ] Modo manutenção
+- [ ] Backups e logs
+
+### **Backend:**
+- [ ] API routes para todas as ações
+- [ ] Middleware de verificação admin
+- [ ] Rate limiting
+- [ ] Validação de dados
+- [ ] Integração completa Mercado Pago
+- [ ] Sistema de emails transacionais
+- [ ] Webhook handler
+- [ ] Audit logging automático
+
+### **Segurança:**
+- [ ] RLS em todas as tabelas
+- [ ] Verificação de permissões
+- [ ] Sanitização de inputs
+- [ ] Proteção CSRF
+- [ ] HTTPS forçado
+- [ ] Session timeout
+- [ ] 2FA preparado
+- [ ] Logs de auditoria
+
+### **UX/UI:**
+- [ ] Loading states em todas as ações
+- [ ] Toast notifications
+- [ ] Confirmação modais para ações críticas
+- [ ] Responsive design (mobile/tablet/desktop)
+- [ ] Dark mode (opcional)
+- [ ] Keyboard shortcuts
+- [ ] Search em todas as tabelas
+- [ ] Pagination/infinite scroll
+
+### **Performance:**
+- [ ] Lazy loading de imagens
+- [ ] Debounce em buscas
+- [ ] Cache de queries frequentes
+- [ ] Otimização de queries Supabase
+- [ ] Code splitting
+- [ ] Compressão de assets
+
+---
+
+## 📱 RESPONSIVIDADE
+
+| Elemento | Desktop (1280px+) | Tablet (768-1279px) | Mobile (<768px) |
+|----------|-------------------|---------------------|-----------------|
+| **Sidebar** | Fixa, expandida | Recolhível (ícones) | Menu hambúrguer |
+| **KPIs** | 6 colunas (3x2) | 4 colunas (2x2) | 1 coluna |
+| **Gráficos** | Largura total | Largura total | Empilhados |
+| **Tabelas** | Completa | Scroll horizontal | Cards empilhados |
+| **Modais** | Centralizado 90% | 95% width | Fullscreen |
+| **Forms** | 2-3 colunas | 2 colunas | 1 coluna |
+
+---
+
+## 🚀 OTIMIZAÇÕES E AUTOMAÇÕES
+
+### **Automações Sugeridas:**
+1. **Backup Automático:** Diário às 03:00 via Supabase pg_dump
+2. **Limpeza de Logs:** Remover logs > 90 dias (cron job)
+3. **Relatórios Automáticos:** Enviar por email todo dia 1º do mês
+4. **Alertas de Disputa:** Notificar admin se disputa > 48h sem ação
+5. **Sincronização MP:** Webhook para atualizar status de pagamento
+6. **Cache de Métricas:** Atualizar a cada 5 minutos (não em tempo real)
+
+### **Métricas de Performance:**
+- **LCP (Largest Contentful Paint):** < 2.5s
+- **FID (First Input Delay):** < 100ms
+- **CLS (Cumulative Layout Shift):** < 0.1
+- **Time to Interactive:** < 3.8s
+
+---
+
+**Resultado Esperado:**
+Um painel administrativo **enterprise-level**, completo, seguro e profissional, que permite gerenciar todos os aspectos da plataforma INOVAPRO com eficiência. Cada botão tem uma função clara, cada card exibe dados reais e acionáveis, e cada aba fornece ferramentas poderosas para administração. A interface é intuitiva, responsiva e otimizada para produtividade máxima dos administradores.
+
+---
+
+**Nota para a IA Desenvolvedora:**
+Implemente por módulos, começando pela Visão Geral (dashboard), depois Usuários, e assim sucessivamente. Teste cada módulo completamente antes de avançar. Use componentes reutilizáveis (Card, Table, Modal, Button) para manter consistência. Priorize a segurança e validação de dados em todas as operações. Documente todas as APIs criadas.
